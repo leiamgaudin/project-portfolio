@@ -1,0 +1,106 @@
+---
+const experiences = [
+  {
+    role: "Mechanical Design Engineer, Dimensional Engineering Intern",
+    company: "Tesla, Inc.",
+    location: "Palo Alto, CA",
+    period: "8/26 – Present",
+    bullets: [
+      "Improved 3DCS sim tree workflow by 1200% by developing an automation software tool for CATIA, utilizing computer vision.",
+      "Created a structural beam design alteration that increased Cpk from 0.25 to 2.25 by increasing clearance gap and adding a bracket welded post-assembly to provide 'z-slip' while protecting structural integrity, resulting in 0% out of spec parts (down from 45.33%).",
+      "Analyzed 10+ critical interfaces on the Tesla Megapack (NE42) using DVA models and Monte Carlo contributor analysis simulations in 3DCS for 3DEXPERIENCE / CATIA.",
+      "Defined and protected critical dimensional objectives to reach 8-sigma repeatability; collaborated with manufacturing engineers on GD&T datum strategy and fixture optimization to reduce framing station cycle time.",
+      "Performed 40+ 1-D stack-ups to analyze potential assembly interference issues and advised design engineers."
+    ],
+    tags: ["CATIA V5/V6", "3DCS", "Monte Carlo Simulations", "GD&T", "Computer Vision Automation", "Megapack (NE42)"]
+  },
+  {
+    role: "Engineering Project Management Intern",
+    company: "American Water Works Company, Inc.",
+    location: "Indianapolis, IN",
+    period: "5/26 – 8/26",
+    bullets: [
+      "Led multidisciplinary coordination across 4 water main replacement projects, optimizing project scheduling and milestone tracking for stakeholders, contractors, and inspectors.",
+      "Facilitated project delivery logistics for projects valued at $2M+ through the synthesis of technical documentation and engineering specifications to accelerate review cycles.",
+      "Managed on-the-fly design tweaks when discrepancies arose between physical piping installations and design schematics.",
+      "Conducted safety meetings and evaluations during active projects to maintain compliance with corporate safety standards."
+    ],
+    tags: ["Project Management", "Technical Specifications", "Field Engineering", "Vendor & Stakeholder Relations"]
+  },
+  {
+    role: "Mechanical Engineering Intern",
+    company: "Estes Design & Manufacturing, Inc.",
+    location: "Indianapolis, IN",
+    period: "5/25 – 8/25",
+    bullets: [
+      "Designed 3D printed fixtures and jigs to improve assembly time over heavier metal jigs, cutting assembly time by 4%, boosting OEE, and saving $11,000+ in development costs.",
+      "Drafted 60+ CAD drawings and applied GD&T with tolerance stack-up analysis on large assemblies to guarantee seamless assembly of sheet metal and hardware.",
+      "Executed DFM principles in sheet metal, gaining expertise in laser cutting (Salvagnini L3) and precision forming (Amada).",
+      "Developed a linear actuator and electrical system for a firearms safe door featuring RFID wireless locking and a comprehensive control circuit plan."
+    ],
+    tags: ["DFM / DFA", "Sheet Metal (Salvagnini/Amada)", "Tolerance Stack-Ups", "3D Printed Tooling", "RFID & Actuators"]
+  },
+  {
+    role: "Drivetrain Engineer",
+    company: "Purdue Electric Racing (SAE Formula)",
+    location: "Purdue University",
+    period: "1/26 – Present",
+    bullets: [
+      "Verified planetary gear tolerances by designing and manufacturing a fixture for CMM scanning, allowing the team to assess viability of gear manufacturing and innovate the carburization process.",
+      "Collaborated with teammates to revise bolt torque spec calculations for upright oil plate and upper suspension arm after bolt failures, utilizing a Root Cause Analysis (RCA) with Corrective Action.",
+      "Fabricated high-precision drivetrain and pedal box potentiometer components using manual & CNC mills and lathes.",
+      "Hands-on assembly of suspension and front uprights (planetary gearboxes) during testing phase to prep the car for competition."
+    ],
+    tags: ["Formula SAE Electric", "Planetary Gearboxes", "CMM Inspection", "CNC Machining", "Root Cause Analysis (RCA)"]
+  }
+];
+---
+
+<section id="experience" class="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-white/10">
+  <div class="space-y-4 mb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 text-xs font-semibold tracking-wider uppercase">
+      Career History
+    </div>
+    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+      Professional Experience
+    </h2>
+    <p class="text-neutral-400 text-base max-w-xl font-normal">
+      High-impact engineering co-ops and leadership in dimensional engineering, manufacturing fixtures, and racing powertrain systems.
+    </p>
+  </div>
+
+  <div class="space-y-6">
+    {experiences.map((exp) => (
+      <div class="apple-card rounded-3xl p-6 sm:p-8 space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b border-white/5 pb-4">
+          <div>
+            <h3 class="text-xl font-bold text-white tracking-tight">{exp.role}</h3>
+            <div class="text-sm font-medium text-blue-400 mt-0.5">
+              {exp.company} <span class="text-neutral-500">•</span> <span class="text-neutral-400 font-normal">{exp.location}</span>
+            </div>
+          </div>
+          <span class="inline-block px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-neutral-300 self-start sm:self-auto">
+            {exp.period}
+          </span>
+        </div>
+
+        <ul class="space-y-2.5 text-sm text-neutral-300">
+          {exp.bullets.map((bullet) => (
+            <li class="flex items-start gap-3">
+              <span class="text-blue-400 text-base leading-tight mt-0.5">•</span>
+              <span class="leading-relaxed">{bullet}</span>
+            </li>
+          ))}
+        </ul>
+
+        <div class="flex flex-wrap gap-2 pt-2">
+          {exp.tags.map((tag) => (
+            <span class="text-xs px-2.5 py-1 rounded-lg bg-white/5 text-neutral-300 border border-white/5">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

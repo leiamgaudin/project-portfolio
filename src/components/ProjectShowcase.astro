@@ -1,0 +1,277 @@
+---
+import { projects } from "../data/projects";
+---
+
+<section id="projects" class="py-20 px-4 sm:px-6 max-w-5xl mx-auto">
+  <div class="space-y-4 mb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 text-xs font-semibold tracking-wider uppercase">
+      Featured Engineering Work
+    </div>
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+          Selected Projects & Research
+        </h2>
+        <p class="text-neutral-400 text-base max-w-xl mt-2 font-normal">
+          Click any project card to open its high-resolution CAD models, dynamic MATLAB simulations, and testing teardowns.
+        </p>
+      </div>
+      <a 
+        href="/assets/docs/Project_Portfolio.pdf" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-full apple-card text-neutral-300 hover:text-white text-xs font-medium self-start md:self-auto"
+      >
+        <span>View Original Slides (PDF)</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {projects.map((project, index) => (
+      <div 
+        class="apple-card rounded-3xl overflow-hidden flex flex-col group cursor-pointer"
+        data-project-trigger={project.id}
+      >
+        <!-- Preview Image Container with Apple-like subtle border & aspect ratio -->
+        <div class="relative aspect-[16/10] bg-neutral-900 overflow-hidden border-b border-white/5">
+          <img 
+            src={project.coverImage} 
+            alt={project.title}
+            class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          
+          <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs">
+            <span class="px-2.5 py-1 rounded-full bg-black/60 backdrop-blur-md text-white/90 border border-white/10 font-medium">
+              {project.category}
+            </span>
+            <span class="text-neutral-300 font-mono text-[11px] bg-black/40 backdrop-blur-md px-2 py-0.5 rounded">
+              {project.date}
+            </span>
+          </div>
+        </div>
+
+        <!-- Body content -->
+        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-2">
+            <div class="text-xs font-medium text-blue-400">{project.org}</div>
+            <h3 class="text-xl font-bold text-white group-hover:text-blue-300 transition-colors">
+              {project.title}
+            </h3>
+            <p class="text-sm text-neutral-400 line-clamp-2 leading-relaxed">
+              {project.summary}
+            </p>
+          </div>
+
+          <!-- Quick Metrics Bar -->
+          {project.metrics && (
+            <div class="grid grid-cols-2 gap-2 py-2 border-y border-white/5 my-2">
+              {project.metrics.slice(0, 2).map((m) => (
+                <div>
+                  <div class="text-[10px] text-neutral-500 uppercase tracking-wider">{m.label}</div>
+                  <div class="text-xs font-semibold text-neutral-200">{m.value}</div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div class="flex items-center justify-between pt-2">
+            <div class="flex flex-wrap gap-1.5">
+              {project.tags.slice(0, 3).map((tag) => (
+                <span class="text-[11px] px-2 py-0.5 rounded-md bg-white/5 text-neutral-400 border border-white/5">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <span class="text-xs font-medium text-neutral-300 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              Inspect
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Interactive Project Modal (Apple-style Sheets / Modal) -->
+  <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 md:p-10">
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/80 backdrop-blur-xl transition-opacity"></div>
+    
+    <div class="relative w-full max-w-4xl max-h-[90vh] bg-[#141418] border border-white/10 rounded-3xl overflow-hidden flex flex-col shadow-2xl z-10 animate-in fade-in zoom-in-95 duration-200">
+      <!-- Modal Header -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-neutral-900/50">
+        <div>
+          <span id="modal-category" class="text-xs font-medium text-blue-400 uppercase tracking-wider"></span>
+          <h3 id="modal-title" class="text-xl sm:text-2xl font-bold text-white"></h3>
+        </div>
+        <button id="modal-close" class="p-2 rounded-full bg-white/10 hover:bg-white/20 text-neutral-300 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Modal Body (Scrollable) -->
+      <div class="flex-1 overflow-y-auto p-6 space-y-6">
+        <!-- Interactive Slide Carousel -->
+        <div class="space-y-2">
+          <div class="relative rounded-2xl overflow-hidden border border-white/10 bg-black aspect-[16/9]">
+            <img id="carousel-img" src="" alt="Project Presentation Slide" class="w-full h-full object-contain" />
+            
+            <button id="prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+            </button>
+            <button id="next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </button>
+
+            <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/70 border border-white/10 text-xs font-mono text-neutral-300">
+              <span id="slide-index">1</span> / <span id="slide-total">1</span>
+            </div>
+          </div>
+          <p id="slide-caption" class="text-xs sm:text-sm text-neutral-400 italic px-1"></p>
+        </div>
+
+        <!-- Metrics Row -->
+        <div id="modal-metrics" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2"></div>
+
+        <!-- Details & Highlights -->
+        <div class="space-y-4 pt-4 border-t border-white/10">
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-2">Project Overview</h4>
+            <p id="modal-summary" class="text-sm sm:text-base text-neutral-300 leading-relaxed"></p>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-2">Key Engineering Contributions</h4>
+            <ul id="modal-highlights" class="space-y-2 text-sm text-neutral-300"></ul>
+          </div>
+
+          <div>
+            <h4 class="text-sm font-semibold uppercase tracking-wider text-neutral-400 mb-2">Tools & Competencies</h4>
+            <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ projects }}>
+  const modal = document.getElementById('project-modal');
+  const backdrop = document.getElementById('modal-backdrop');
+  const closeBtn = document.getElementById('modal-close');
+  const modalTitle = document.getElementById('modal-title');
+  const modalCat = document.getElementById('modal-category');
+  const modalSummary = document.getElementById('modal-summary');
+  const modalHighlights = document.getElementById('modal-highlights');
+  const modalTags = document.getElementById('modal-tags');
+  const modalMetrics = document.getElementById('modal-metrics');
+  
+  const carouselImg = document.getElementById('carousel-img');
+  const slideCaption = document.getElementById('slide-caption');
+  const slideIndex = document.getElementById('slide-index');
+  const slideTotal = document.getElementById('slide-total');
+  const prevBtn = document.getElementById('prev-slide');
+  const nextBtn = document.getElementById('next-slide');
+
+  let currentProject = null;
+  let activeSlide = 0;
+
+  function updateSlide() {
+    if (!currentProject || !currentProject.slides.length) return;
+    const slide = currentProject.slides[activeSlide];
+    carouselImg.src = slide.src;
+    slideCaption.textContent = slide.caption || "";
+    slideIndex.textContent = activeSlide + 1;
+    slideTotal.textContent = currentProject.slides.length;
+  }
+
+  function openProject(id) {
+    const proj = projects.find(p => p.id === id);
+    if (!proj) return;
+    currentProject = proj;
+    activeSlide = 0;
+
+    modalTitle.textContent = proj.title;
+    modalCat.textContent = `${proj.category} • ${proj.org}`;
+    modalSummary.textContent = proj.summary;
+
+    // Highlights
+    modalHighlights.innerHTML = proj.highlights
+      .map(h => `<li class="flex items-start gap-2.5"><span class="text-blue-400 mt-1">•</span><span>${h}</span></li>`)
+      .join('');
+
+    // Tags
+    modalTags.innerHTML = proj.tags
+      .map(t => `<span class="px-2.5 py-1 rounded-lg bg-white/5 border border-white/10 text-xs text-neutral-300">${t}</span>`)
+      .join('');
+
+    // Metrics
+    if (proj.metrics && proj.metrics.length > 0) {
+      modalMetrics.innerHTML = proj.metrics
+        .map(m => `
+          <div class="p-3 rounded-xl bg-white/5 border border-white/5">
+            <div class="text-[10px] text-neutral-400 uppercase tracking-wider">${m.label}</div>
+            <div class="text-sm font-semibold text-white mt-0.5">${m.value}</div>
+          </div>
+        `).join('');
+      modalMetrics.classList.remove('hidden');
+    } else {
+      modalMetrics.classList.add('hidden');
+    }
+
+    updateSlide();
+
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-project-trigger]').forEach(card => {
+    card.addEventListener('click', () => {
+      const id = card.getAttribute('data-project-trigger');
+      openProject(id);
+    });
+  });
+
+  closeBtn?.addEventListener('click', closeModal);
+  backdrop?.addEventListener('click', closeModal);
+
+  prevBtn?.addEventListener('click', () => {
+    if (!currentProject) return;
+    activeSlide = (activeSlide - 1 + currentProject.slides.length) % currentProject.slides.length;
+    updateSlide();
+  });
+
+  nextBtn?.addEventListener('click', () => {
+    if (!currentProject) return;
+    activeSlide = (activeSlide + 1) % currentProject.slides.length;
+    updateSlide();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (modal.classList.contains('hidden')) return;
+    if (e.key === 'Escape') closeModal();
+    if (e.key === 'ArrowLeft') prevBtn?.click();
+    if (e.key === 'ArrowRight') nextBtn?.click();
+  });
+</script>

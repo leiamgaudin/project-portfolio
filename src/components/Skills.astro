@@ -1,0 +1,99 @@
+---
+const skillCategories = [
+  {
+    title: "Design & Dimensional Engineering",
+    icon: "M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z",
+    skills: [
+      "GD&T (ASME Y14.5)",
+      "Tolerance Stack-Up (1D & 3D)",
+      "3DCS Variation Analyst",
+      "Monte Carlo Simulation",
+      "DFM / DFA (Design for Mfg & Assembly)",
+      "Tooling & Fixture Design",
+      "Finite Element Analysis (FEA)",
+      "Sheet Metal Design",
+      "Cpk Statistical Analysis"
+    ]
+  },
+  {
+    title: "CAD & Engineering Software",
+    icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    skills: [
+      "CATIA V5 / V6 (3DEXPERIENCE)",
+      "Siemens NX",
+      "SolidWorks",
+      "Creo Parametric",
+      "MATLAB & Simulink",
+      "CAM Software",
+      "GT Power",
+      "ROS (Robot Operating System)",
+      "VS Code"
+    ]
+  },
+  {
+    title: "Manufacturing & Prototyping",
+    icon: "M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z",
+    skills: [
+      "CNC Mills & Lathes",
+      "CMM Scanning & Inspection",
+      "Rapid Prototyping (FDM / SLA)",
+      "Bambu Lab / Prusa Tuning",
+      "Salvagnini L3 Fiber Laser",
+      "Amada Precision Press Brake",
+      "Soldering & Wire Harnesses",
+      "Equipment Troubleshooting"
+    ]
+  },
+  {
+    title: "Programming & Controls",
+    icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4",
+    skills: [
+      "Python",
+      "Computer Vision (OpenCV)",
+      "C / C++",
+      "Arduino Microcontrollers",
+      "PID Control Systems",
+      "Data Acquisition (DAQ)",
+      "Web Development (HTML/CSS/JS)",
+      "Git & Version Control"
+    ]
+  }
+];
+---
+
+<section id="skills" class="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-white/10">
+  <div class="space-y-4 mb-12">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-400 text-xs font-semibold tracking-wider uppercase">
+      Capabilities
+    </div>
+    <h2 class="text-3xl sm:text-5xl font-bold tracking-tight text-white">
+      Technical Competencies
+    </h2>
+    <p class="text-neutral-400 text-base max-w-xl font-normal">
+      Combining hands-on physical manufacturing and advanced dimensional GD&T analysis with custom software automation tools.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {skillCategories.map((cat) => (
+      <div class="apple-card rounded-3xl p-6 sm:p-7 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d={cat.icon} />
+            </svg>
+          </div>
+          <h3 class="text-lg font-bold text-white tracking-tight">{cat.title}</h3>
+        </div>
+
+        <div class="flex flex-wrap gap-2 pt-2">
+          {cat.skills.map((skill) => (
+            <span class="text-xs px-3 py-1.5 rounded-xl bg-white/5 text-neutral-200 border border-white/5 hover:border-white/15 transition-colors">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
