@@ -32,7 +32,7 @@ export const projects: Project[] = [
       "Custom wiring harness, solder work, and power distribution board fitted into a sub-compact chassis."
     ],
     tags: ["Siemens NX / CAD", "Bambu Lab 3D Printing", "MATLAB", "BLDC Powertrain", "Rapid Prototyping"],
-    coverImage: "/assets/projects/slide_8.png",
+    coverImage: "/assets/projects/slide_8.webp",
     metrics: [
       { label: "Tournament Result", value: "1st Place" },
       { label: "Weight Limit", value: "1.0 lb (PLA)" },
@@ -40,13 +40,13 @@ export const projects: Project[] = [
       { label: "Battery Config", value: "3S LiPo" },
     ],
     slides: [
-      { src: "/assets/projects/slide_8.png", caption: "Fully assembled 1-lb Plastic Antweight BattleBot with belt-driven drivetrain and asymmetric weapon." },
-      { src: "/assets/projects/slide_9.png", caption: "Modular 3D printed components and sub-chassis electronics assembly." },
-      { src: "/assets/projects/slide_10.png", caption: "Exploded CAD assembly breakdown: chassis housing, drive hub, upright, and weapon." },
-      { src: "/assets/projects/slide_11.png", caption: "Cantilevered weapon assembly mounted directly on the brushless outrunner motor." },
-      { src: "/assets/projects/slide_12.png", caption: "Final CAD render alongside MATLAB center of mass numerical verification." },
-      { src: "/assets/projects/slide_13.png", caption: "Match 2 combat aftermath: devastating damage inflicted on opponent while maintaining full drive." },
-      { src: "/assets/projects/slide_14.png", caption: "Post-tournament inspection: zero fractures or catastrophic structural failures." }
+      { src: "/assets/projects/slide_8.webp", caption: "Fully assembled 1-lb Plastic Antweight BattleBot with belt-driven drivetrain and asymmetric weapon." },
+      { src: "/assets/projects/slide_9.webp", caption: "Modular 3D printed components and sub-chassis electronics assembly." },
+      { src: "/assets/projects/slide_10.webp", caption: "Exploded CAD assembly breakdown: chassis housing, drive hub, upright, and weapon." },
+      { src: "/assets/projects/slide_11.webp", caption: "Cantilevered weapon assembly mounted directly on the brushless outrunner motor." },
+      { src: "/assets/projects/slide_12.webp", caption: "Final CAD render alongside MATLAB center of mass numerical verification." },
+      { src: "/assets/projects/slide_13.webp", caption: "Match 2 combat aftermath: devastating damage inflicted on opponent while maintaining full drive." },
+      { src: "/assets/projects/slide_14.webp", caption: "Post-tournament inspection: zero fractures or catastrophic structural failures." }
     ]
   },
   {
@@ -63,7 +63,7 @@ export const projects: Project[] = [
       "Integrated motor cavity inside blade body so motor stator weight directly contributes to rotational inertia."
     ],
     tags: ["MATLAB", "Algorithm Design", "Computational Geometry", "Vibration Reduction", "Kinematic Analysis"],
-    coverImage: "/assets/projects/slide_15.png",
+    coverImage: "/assets/projects/slide_15.webp",
     metrics: [
       { label: "X-Axis CoM Offset", value: "-0.003 mm" },
       { label: "Z-Axis CoM Offset", value: "+0.005 mm" },
@@ -71,10 +71,10 @@ export const projects: Project[] = [
       { label: "Efficiency", value: "Optimized Inertia" },
     ],
     slides: [
-      { src: "/assets/projects/slide_15.png", caption: "Mass distribution optimization for high-speed kinetic weapon blades." },
-      { src: "/assets/projects/slide_16.png", caption: "Pipeline: Input geometry STL -> MATLAB point extraction -> spline fitting -> CAD re-extrusion." },
-      { src: "/assets/projects/slide_17.png", caption: "Comparative CoM plot: Old uncalibrated geometry vs. MATLAB balanced curve profile." },
-      { src: "/assets/projects/slide_18.png", caption: "Final blade design featuring recessed motor pocket and internal press-fit chamfer." }
+      { src: "/assets/projects/slide_15.webp", caption: "Mass distribution optimization for high-speed kinetic weapon blades." },
+      { src: "/assets/projects/slide_16.webp", caption: "Pipeline: Input geometry STL -> MATLAB point extraction -> spline fitting -> CAD re-extrusion." },
+      { src: "/assets/projects/slide_17.webp", caption: "Comparative CoM plot: Old uncalibrated geometry vs. MATLAB balanced curve profile." },
+      { src: "/assets/projects/slide_18.webp", caption: "Final blade design featuring recessed motor pocket and internal press-fit chamfer." }
     ]
   },
   {
@@ -91,7 +91,7 @@ export const projects: Project[] = [
       "Modeled and animated full motion dynamic assembly in Siemens NX to inspect pin-to-disk clearances and housing stress points."
     ],
     tags: ["Siemens NX", "Parametric Modeling", "Law Curves", "GD&T", "Precision Prototyping"],
-    coverImage: "/assets/projects/slide_5.png",
+    coverImage: "/assets/projects/slide_5.webp",
     metrics: [
       { label: "Reduction Ratio", value: "11:1" },
       { label: "Component Accuracy", value: "±0.02 mm" },
@@ -99,9 +99,9 @@ export const projects: Project[] = [
       { label: "CAD System", value: "Siemens NX" },
     ],
     slides: [
-      { src: "/assets/projects/slide_5.png", caption: "Parametric 11:1 cycloidal drive gearbox with dual counter-balancing disks." },
-      { src: "/assets/projects/slide_6.png", caption: "Parametric mathematical formulas linked directly inside Siemens NX expressions." },
-      { src: "/assets/projects/slide_7.png", caption: "Complete exploded components: cycloid housing, eccentric shaft, dual disks, output drive." }
+      { src: "/assets/projects/slide_5.webp", caption: "Parametric 11:1 cycloidal drive gearbox with dual counter-balancing disks." },
+      { src: "/assets/projects/slide_6.webp", caption: "Parametric mathematical formulas linked directly inside Siemens NX expressions." },
+      { src: "/assets/projects/slide_7.webp", caption: "Complete exploded components: cycloid housing, eccentric shaft, dual disks, output drive." }
     ]
   },
   {
@@ -118,7 +118,7 @@ export const projects: Project[] = [
       "Achieved exceptionally low sum of squared errors (SSE_mod < 0.065 across all tested vehicle classes)."
     ],
     tags: ["MATLAB / Simulink", "System Modeling", "Data Filtering", "Vehicle Dynamics", "Statistical Analysis"],
-    coverImage: "/assets/projects/slide_19.png",
+    coverImage: "/assets/projects/slide_19.webp",
     metrics: [
       { label: "Compact SSE", value: "0.037" },
       { label: "Sedan SSE", value: "0.025" },
@@ -126,11 +126,11 @@ export const projects: Project[] = [
       { label: "Architecture", value: "First-Order Transfer" },
     ],
     slides: [
-      { src: "/assets/projects/slide_19.png", caption: "Automated cruise control system response flowchart and MATLAB block diagram." },
-      { src: "/assets/projects/slide_20.png", caption: "Multi-vehicle class tire performance filtered test curves." },
-      { src: "/assets/projects/slide_21.png", caption: "Raw telemetry vs. first-order response model overlay showing tight conformity." },
-      { src: "/assets/projects/slide_22.png", caption: "Upper/lower safety tolerance envelope verification for vehicle tire qualification." },
-      { src: "/assets/projects/slide_23.png", caption: "Calculated time constants and SSE parameter validation matrices." }
+      { src: "/assets/projects/slide_19.webp", caption: "Automated cruise control system response flowchart and MATLAB block diagram." },
+      { src: "/assets/projects/slide_20.webp", caption: "Multi-vehicle class tire performance filtered test curves." },
+      { src: "/assets/projects/slide_21.webp", caption: "Raw telemetry vs. first-order response model overlay showing tight conformity." },
+      { src: "/assets/projects/slide_22.webp", caption: "Upper/lower safety tolerance envelope verification for vehicle tire qualification." },
+      { src: "/assets/projects/slide_23.webp", caption: "Calculated time constants and SSE parameter validation matrices." }
     ]
   },
   {
@@ -146,16 +146,16 @@ export const projects: Project[] = [
       "Auto-syncs submission status: completed assignments instantly vanish upon confirmed upload."
     ],
     tags: ["Python", "Web Scraping", "JavaScript / HTML", "Productivity Tooling"],
-    coverImage: "/assets/projects/slide_25.png",
+    coverImage: "/assets/projects/slide_25.webp",
     metrics: [
       { label: "Time Saved", value: "60s per lookup" },
       { label: "Platforms Scraped", value: "Brightspace + Gradescope" },
       { label: "Frontend", value: "Clean Responsive Web" },
     ],
     slides: [
-      { src: "/assets/projects/slide_25.png", caption: "Problem identification and Python scraping architecture." },
-      { src: "/assets/projects/slide_26.png", caption: "Direct assignment launch and auto-completion tracking mechanics." },
-      { src: "/assets/projects/slide_27.png", caption: "Visual assignment schedule and calendar integration view." }
+      { src: "/assets/projects/slide_25.webp", caption: "Problem identification and Python scraping architecture." },
+      { src: "/assets/projects/slide_26.webp", caption: "Direct assignment launch and auto-completion tracking mechanics." },
+      { src: "/assets/projects/slide_27.webp", caption: "Visual assignment schedule and calendar integration view." }
     ]
   },
   {
@@ -171,15 +171,15 @@ export const projects: Project[] = [
       "Delivered production-ready CAD models and 2D manufacturing drawings compliant with ASME Y14.5."
     ],
     tags: ["Web Design", "Freelance CAD", "Manufacturing Drawings", "Client Logistics"],
-    coverImage: "/assets/projects/slide_28.png",
+    coverImage: "/assets/projects/slide_28.webp",
     metrics: [
       { label: "Services", value: "CAD, Drawings, 3D Print" },
       { label: "Standards", value: "ASME Y14.5 GD&T" },
       { label: "Focus", value: "DFM & Rapid Turnaround" },
     ],
     slides: [
-      { src: "/assets/projects/slide_28.png", caption: "Freelance CAD and engineering design services web portal." },
-      { src: "/assets/projects/slide_29.png", caption: "Client intake, file review, and dynamic quote management dashboard." }
+      { src: "/assets/projects/slide_28.webp", caption: "Freelance CAD and engineering design services web portal." },
+      { src: "/assets/projects/slide_29.webp", caption: "Client intake, file review, and dynamic quote management dashboard." }
     ]
   }
 ];
