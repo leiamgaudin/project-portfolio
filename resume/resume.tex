@@ -1,4 +1,9 @@
-\documentclass[letterpaper,10pt]{article}
+%-------------------------
+% Resume in Latex
+% Updated for Zoox Mechanical Engineering Co-op
+%------------------------
+
+\documentclass[letterpaper,11pt]{article}
 
 \usepackage{latexsym}
 \usepackage[empty]{fullpage}
@@ -11,18 +16,20 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
-\usepackage{fontawesome5}
+\input{glyphtounicode}
+\usepackage{xcolor} % Required for color commands
+
+\usepackage{times}
 
 \pagestyle{fancy}
-\fancyhf{}
+\fancyhf{} 
 \fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Adjust margins
 \addtolength{\oddsidemargin}{-0.5in}
 \addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.0in}
+\addtolength{\textwidth}{1in}
 \addtolength{\topmargin}{-.5in}
 \addtolength{\textheight}{1.0in}
 
@@ -32,10 +39,11 @@
 \raggedright
 \setlength{\tabcolsep}{0in}
 
-% Sections formatting
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large\bfseries
+  \vspace{-4pt}\scshape\raggedright\large
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\pdfgentounicode=1
 
 %-------------------------
 % Custom commands
@@ -53,27 +61,29 @@
     \end{tabular*}\vspace{-7pt}
 }
 
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
 
 \newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in, label={$\bullet$}]} 
 \newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
 
 %-------------------------------------------
 %%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
-
-%----------HEADING----------
+\definecolor{paleblue}{RGB}{215, 229, 240}
+\pagecolor{paleblue!35}
 \begin{center}
-    {\Huge \scshape Leiam Gaudin} \\ \vspace{4pt}
-    \small \href{mailto:leiamgaudin@gmail.com}{\underline{leiamgaudin@gmail.com}} $|$ 
+    \textbf{\huge \scshape Leiam Gaudin} \\ \vspace{4pt}
+    \small 317-556-0084 $|$ \href{mailto:leiamgaudin@gmail.com}{\underline{leiamgaudin@gmail.com}} $|$ 
     \href{https://linkedin.com/in/leiam-gaudin}{\underline{linkedin.com/in/leiam-gaudin}} $|$
-    \href{https://leiamgaudin.com}{\underline{leiamgaudin.com}} $|$
-    \href{https://github.com/leiamgaudin}{\underline{github.com/leiamgaudin}}
+    \href{https://leiamgaudin.com/}{\underline{Portfolio: leiamgaudin.com}}
 \end{center}
 
 %-----------EDUCATION-----------
@@ -81,16 +91,15 @@
   \resumeSubHeadingListStart
     \resumeSubheading
       {Purdue University}{West Lafayette, IN}
-      {Bachelor of Science in Mechanical Engineering $|$ GPA: 3.57}{Expected December 2027}
+      {Bachelor of Science in Mechanical Engineering}{GPA: 3.57 | Expected December 2027}
   \resumeSubHeadingListEnd
 
 %-----------EXPERIENCE-----------
 \section{Experience}
   \resumeSubHeadingListStart
-
-    \resumeSubheading
-      {Tesla, Inc.}{Palo Alto, CA}
-      {Mechanical Design Engineer, Dimensional Engineering Intern}{8/26 -- Present}
+  \resumeSubheading
+      {Mechanical Design Engineer, Dimensional Engineering Intern}{8/26 -- \textbf{Present}}
+      {\textbf{Tesla, Inc.}}{Palo Alto, CA}
       \resumeItemListStart
         \resumeItem{Improved 3DCS sim tree workflow by 1200\% by developing an automation software tool for CATIA, utilizing computer vision.}
         \resumeItem{Created a structural beam design alteration that increased Cpk from 0.25 to 2.25 by increasing clearance gap and adding a bracket welded post-assembly to provide ``z-slip'' while protecting the structural integrity of the enclosure, resulting in 0\% of parts out of spec compared to 45.33\% on the previous design.}
@@ -98,30 +107,31 @@
         \resumeItem{Defined and protected critical dimensional objectives to reach 8-sigma repeatability and collaborated with manufacturing engineers on GD\&T datum strategy and fixture optimization; collaborated to reduce framing station cycle time.}
         \resumeItem{Performed 40+ 1-D stack-ups to analyze potential assembly interference issues; used data to advise engineers on design.}
       \resumeItemListEnd
-
     \resumeSubheading
-      {American Water Works Company, Inc.}{Indianapolis, IN}
       {Engineering Project Management Intern}{5/26 -- 8/26}
+      {American Water Works Company, Inc.}{Indianapolis, IN}
       \resumeItemListStart
         \resumeItem{Led multidisciplinary coordination across 4 water main replacement projects, optimizing project scheduling and milestone tracking for stakeholders, contractors, and inspectors.}
         \resumeItem{Conducted safety meetings and evaluations during active projects to maintain compliance with corporate safety standards.}
         \resumeItem{Facilitated project delivery logistics for projects valued at \$2M+ through the synthesis of technical documentation and engineering specifications to accelerate review cycles.}
         \resumeItem{Managed on-the-fly design tweaks when there were discrepancies between physical piping installations and design schematics.}
       \resumeItemListEnd
-
+      
     \resumeSubheading
-      {Estes Design \& Manufacturing, Inc.}{Indianapolis, IN}
       {Mechanical Engineering Intern}{5/25 -- 8/25}
+      {Estes Design \& Manufacturing, Inc.}{Indianapolis, IN}
       \resumeItemListStart
         \resumeItem{Designed 3D printed fixtures and jigs to improve assembly time over larger, heavier metal jigs, cutting assembly time by 4\%, boosting OEE and saving \$11,000+ in development costs.}
         \resumeItem{Drafted 60+ CAD drawings and applied GD\&T with tolerance stack up analysis on large assemblies to guarantee the seamless assembly of hardware and sheet metal components.}
         \resumeItem{Executed DFM principles in sheet metal, gaining expertise in laser cutting (Salvagnini L3) and precision forming (Amada).}
         \resumeItem{Developed a linear actuator and electrical system for a firearms safe door featuring RFID wireless locking and a comprehensive control plan of a circuit containing limit switches and relays.}
+        % \resumeItem{Performed Root Cause Analysis on sheet metal forming machinery to maximize process reliability.}
       \resumeItemListEnd
 
+
     \resumeSubheading
-      {Purdue Electric Racing (SAE)}{West Lafayette, IN}
-      {Drivetrain Engineer}{1/26 -- Present}
+      {Purdue Electric Racing (SAE) Drivetrain Engineer}{1/26 -- Present}
+      {Purdue University}{West Lafayette, IN}
       \resumeItemListStart
         \resumeItem{Verified planetary gear tolerances by designing and manufacturing a fixture for CMM scanning, allowing the team to assess viability of our current gear manufacturing processes, leading to innovations in our carburization process.}
         \resumeItem{Collaborated with teammates to revise bolt torque spec calculations for upright oil plate and upper suspension arm after bolt failures during assembly, utilizing a Root Cause Analysis approach with Corrective Action.}
@@ -129,30 +139,37 @@
         \resumeItem{Hands on assembly of suspension and front uprights (planetary gearboxes) during testing phase to prep the car for competition.}
       \resumeItemListEnd
 
+    % \resumeSubheading
+    %   {Rapid Prototyping Lab Teaching Assistant}{8/25 -- Present}
+    %   {Purdue University}{West Lafayette, IN}
+    %   \resumeItemListStart
+    %     \resumeItem{Provided \textbf{DFM and DFA} feedback for 20+ Senior Design Capstone teams, advising on complex part geometry, material selection, and assembly optimization for physical builds of their projects through cross functional collaboration.}
+    %     \resumeItem{Managed a fleet of industrial FDM/SLA printers, hands on disassembly and repair of 3d printers, and maintenance under a Preventive Maintenance Schedule to ensure 24/7 uptime and part quality.}
+    %   \resumeItemListEnd
+
   \resumeSubHeadingListEnd
 
-%-----------PROJECTS-----------
+  %-----------PROJECTS-----------
 \section{Projects}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Design of Parametric Cycloidal Drive Reducer}{11/25}
-      {CAD in Siemens NX, 3D Printing, Dynamics}{}
+    \resumeSubHeadingListStart
+        \resumeProjectHeading
+      {\textbf{Design of Parametric Cycloidal Drive Reducer} $|$ \emph{CAD in Siemens NX, 3D Printing, Dynamics}}{11/25}
       \resumeItemListStart
         \resumeItem{Designed a parametric cycloidal drive reducer in Siemens NX featuring counter balancing disks and a fully 3d printed assembly.}
+        % \resumeItem{Iterated the design by adding a second disk for increased rigidity and counter balancing during rotation.}
         \resumeItem{Achieved a 0.02 mm accuracy for reducer components by tuning 3D printers for horizontal expansion and thermal effects.}
         \resumeItem{Animated a complex motion assembly in Siemens NX to verify disk motion and housing clearances.}
       \resumeItemListEnd
-  \resumeSubHeadingListEnd
+    \resumeSubHeadingListEnd
 
 %-----------TECHNICAL SKILLS-----------
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Design \& Analysis}{: GD\&T, Tooling Design, FEA, DFM/DFA, Tolerance Stack Up, Sheet Metal, Data Analysis} \\
-     \textbf{Software}{: CATIA V5/V6, Siemens NX, SolidWorks, Creo, CAM, MATLAB, Simulink, GT Power, ROS, Visual Studio Code} \\
-     \textbf{Manufacturing}{: CNC Machining, Equipment Troubleshooting, Salvagnini Laser/Bender, Rapid Prototyping (FDM printing)} \\
-     \textbf{Programming}{: Python, HTML, C++, Arduino, PID Control, Data Acquisition Systems, Quality Control, Measurement Systems}
-    }}
- \end{itemize}
-
+    \begin{itemize}[leftmargin=0.15in, label={}]
+        \small{\item{
+         \textbf{Design \& Analysis}{: GD\&T, Tooling Design, FEA, DFM/DFA, Tolerance Stack Up, Sheet Metal, Data Analysis} \\
+         \textbf{Software}{: CATIA V5/V6, Siemens NX, SolidWorks, Creo, CAM, MATLAB, Simulink, GT Power, ROS, Visual Studio Code} \\
+         \textbf{Manufacturing}{: CNC Machining, Equipment Troubleshooting, Salvagnini Laser/Bender, Rapid Prototyping (FDM printing)} \\
+         \textbf{Programming}{: Python, HTML, C++, Arduino, PID Control, Data Acquisition Systems, Quality Control, Measurement Systems} \\
+         }}
+    \end{itemize}
 \end{document}
