@@ -1,0 +1,42 @@
+name: Compile LaTeX Resume to PDF
+
+on:
+  push:
+    paths:
+      - 'resume/**'
+      - '.github/workflows/compile-resume.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-resume:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          working_directory: resume
+          args: -pdf -interaction=nonstopmode
+
+      - name: Update PDF in public directory
+        run: |
+          mkdir -p public/assets/docs
+          cp resume/resume.pdf public/assets/docs/Leiam_Gaudin_Resume.pdf
+
+      - name: Commit and push updated PDF
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/assets/docs/Leiam_Gaudin_Resume.pdf
+          if git diff --staged --quiet; then
+            echo "No changes in compiled PDF"
+          else
+            git commit -m "chore(resume): auto-compile LaTeX resume to PDF [skip ci]"
+            git push
+          fi
