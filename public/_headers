@@ -1,0 +1,12 @@
+# Cloudflare Pages Custom HTTP Headers
+
+# Ensure HTML is revalidated immediately so visitors always see new content
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Ensure documents like your resume PDF always revalidate immediately
+/assets/docs/*
+  Cache-Control: public, max-age=0, must-revalidate
