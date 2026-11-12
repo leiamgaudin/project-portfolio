@@ -37,6 +37,6 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes in compiled PDF"
           else
-            git commit -m "chore(resume): auto-compile LaTeX resume to PDF [skip ci]"
+            git commit -m "chore(resume): auto-compile LaTeX resume to PDF"
             git push
           fi
