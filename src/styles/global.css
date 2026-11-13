@@ -1,44 +1,168 @@
 @import "tailwindcss";
 
+/* Configure Tailwind v4 to trigger dark mode when .dark class is on html/ancestor */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
-  
+
+  /* Default Light Theme */
   body {
-    @apply bg-[#0c0c0e] text-[#f5f5f7] antialiased selection:bg-blue-600/30 selection:text-white font-sans;
+    background-color: #f8f9fa;
+    color: #1d1d1f;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  /* Dark Theme when .dark class is on html */
+  html.dark body {
+    background-color: #0c0c0e;
+    color: #f5f5f7;
   }
 }
 
-/* Apple-style subtle glassmorphism with Safari optimizations */
+/* Apple-style Glassmorphism Cards */
 .apple-glass {
-  background: rgba(18, 18, 22, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transform: translateZ(0);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+html.dark .apple-glass {
+  background: rgba(18, 18, 24, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
 }
 
 .apple-card {
-  background: rgba(22, 22, 27, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.04), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateZ(0);
+}
+
+html.dark .apple-card {
+  background: rgba(22, 22, 28, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 8px 24px -4px rgba(0, 0, 0, 0.5), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .apple-card:hover {
-    background: rgba(28, 28, 35, 0.9);
-    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.9);
     transform: translateY(-2px);
-    box-shadow: 0 16px 32px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08), inset 0 1px 1px 0 #fff;
+  }
+
+  html.dark .apple-card:hover {
+    background: rgba(28, 28, 36, 0.8);
+    border-color: rgba(255, 255, 255, 0.22);
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.6), inset 0 1px 1px 0 rgba(255, 255, 255, 0.15);
   }
 }
 
-.subtle-badge {
-  @apply text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-neutral-300 font-medium tracking-wide;
+/* Translucent Apple Liquid Glass Buttons (Light & Dark) */
+.glass-btn {
+  /* High translucency so backdrop gradients and colors clearly filter through */
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  
+  /* Pronounced Apple glass refraction & double bevel */
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    0 6px 18px -2px rgba(0, 0, 0, 0.06),
+    0 1px 3px 0 rgba(0, 0, 0, 0.04),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04);
+  color: #1d1d1f;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-btn:hover {
+  background: rgba(255, 255, 255, 0.42);
+  border-color: rgba(255, 255, 255, 0.7);
+  border-top-color: #ffffff;
+  box-shadow: 
+    0 10px 25px -3px rgba(0, 0, 0, 0.1),
+    0 2px 6px 0 rgba(0, 0, 0, 0.05),
+    inset 0 1.5px 2px 0 #ffffff;
+  transform: translateY(-1.5px);
+}
+
+html.dark .glass-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  box-shadow: 
+    0 6px 20px 0 rgba(0, 0, 0, 0.4),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+  color: #f5f5f7;
+}
+
+html.dark .glass-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+  border-top-color: rgba(255, 255, 255, 0.55);
+  box-shadow: 
+    0 10px 30px 0 rgba(0, 0, 0, 0.6),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Primary Glass Button (Crisp Frosted Glass with Strong Rim Light) */
+.glass-btn-primary {
+  background: rgba(20, 20, 24, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 
+    0 8px 20px -2px rgba(0, 0, 0, 0.28),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-btn-primary:hover {
+  background: rgba(10, 10, 14, 0.95);
+  border-top-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 
+    0 12px 28px -2px rgba(0, 0, 0, 0.38),
+    inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.5);
+  transform: translateY(-1.5px);
+}
+
+html.dark .glass-btn-primary {
+  background: rgba(255, 255, 255, 0.88);
+  color: #0c0c0e;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-top: 1.5px solid #ffffff;
+  box-shadow: 
+    0 8px 24px 0 rgba(255, 255, 255, 0.25),
+    inset 0 1.5px 1.5px 0 #ffffff;
+}
+
+html.dark .glass-btn-primary:hover {
+  background: #ffffff;
+  box-shadow: 
+    0 12px 32px 0 rgba(255, 255, 255, 0.4),
+    inset 0 1.5px 2px 0 #ffffff;
 }
