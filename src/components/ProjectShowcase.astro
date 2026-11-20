@@ -2,69 +2,68 @@
 import { projects } from "../data/projects";
 ---
 
-<section id="projects" class="py-16 sm:py-20 px-4 sm:px-6 max-w-5xl mx-auto">
-  <div class="space-y-4 mb-8 sm:mb-12">
-    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10 text-neutral-600 dark:text-neutral-400 text-xs font-semibold tracking-wider uppercase">
-      Featured Engineering Work
+<section id="projects" class="py-14 sm:py-16 px-4 sm:px-6 max-w-5xl mx-auto border-t border-neutral-200 dark:border-neutral-800">
+  <div class="space-y-3 mb-8 sm:mb-10">
+    <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-xs font-semibold tracking-wider uppercase">
+      Featured Engineering Projects
     </div>
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
       <div>
-        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-neutral-900 dark:text-white">
           Selected Projects & Research
         </h2>
-        <p class="text-neutral-600 dark:text-neutral-400 text-sm sm:text-base max-w-xl mt-2 font-normal">
-          Tap any project to inspect high-resolution CAD models, dynamic MATLAB simulations, and testing teardowns.
+        <p class="text-neutral-600 dark:text-neutral-400 text-sm max-w-xl mt-1.5 font-normal">
+          Click any project card to open CAD models, equations, MATLAB simulations, and testing teardowns.
         </p>
       </div>
       <a 
         href="/assets/docs/Project_Portfolio.pdf" 
         target="_blank" 
         rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-btn text-xs font-medium self-start md:self-auto"
+        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg clean-btn text-xs font-medium self-start md:self-auto"
       >
         <span>View Original Slides (PDF)</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-neutral-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
         </svg>
       </a>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
     {projects.map((project, index) => (
       <div 
-        class="apple-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col group cursor-pointer active:scale-[0.99] transition-all"
+        class="clean-card rounded-xl overflow-hidden flex flex-col group cursor-pointer"
         data-project-trigger={project.id}
       >
         <!-- Preview Image Container -->
-        <div class="relative aspect-[16/10] bg-neutral-200 dark:bg-neutral-900 overflow-hidden border-b border-black/5 dark:border-white/5">
+        <div class="relative aspect-[16/10] bg-neutral-100 dark:bg-neutral-900 overflow-hidden border-b border-neutral-200 dark:border-neutral-800">
           <img 
             src={project.coverImage} 
             alt={project.title}
-            class="w-full h-full object-cover object-center group-hover:scale-[1.03] transition-transform duration-500 ease-out"
+            class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-300 ease-out"
             loading={index < 2 ? "eager" : "lazy"}
             decoding="async"
           />
-          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
           
-          <div class="absolute bottom-3 left-3 right-3 sm:left-4 sm:right-4 flex items-center justify-between text-xs pointer-events-none">
-            <span class="px-2.5 py-0.5 sm:py-1 rounded-full bg-black/70 backdrop-blur-md text-white border border-white/10 text-[11px] sm:text-xs font-medium">
+          <div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-xs pointer-events-none">
+            <span class="px-2 py-0.5 rounded bg-black/70 text-white text-[11px] font-medium">
               {project.category}
             </span>
-            <span class="text-neutral-200 font-mono text-[10px] sm:text-[11px] bg-black/60 backdrop-blur-md px-2 py-0.5 rounded">
+            <span class="text-neutral-200 font-mono text-[11px] bg-black/50 px-2 py-0.5 rounded">
               {project.date}
             </span>
           </div>
         </div>
 
-        <!-- Body content matching exact styling from company highlight tiles -->
-        <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
-          <div class="space-y-2">
+        <!-- Body content -->
+        <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+          <div class="space-y-1.5">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-medium text-blue-600 dark:text-blue-400">{project.org}</span>
-              <span class="text-[10px] uppercase font-semibold tracking-wider text-neutral-400">{project.category}</span>
+              <span class="text-xs font-mono font-medium text-neutral-500 dark:text-neutral-400">{project.org}</span>
             </div>
-            <h3 class="text-xl font-bold text-neutral-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            <h3 class="text-lg font-bold text-neutral-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
               {project.title}
             </h3>
             <p class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
@@ -74,11 +73,11 @@ import { projects } from "../data/projects";
 
           <!-- Quick Metrics Bar -->
           {project.metrics && (
-            <div class="grid grid-cols-2 gap-2 py-2.5 border-y border-neutral-200/80 dark:border-white/10 my-1">
+            <div class="grid grid-cols-2 gap-2 py-2 border-y border-neutral-200 dark:border-neutral-800 my-1">
               {project.metrics.slice(0, 2).map((m) => (
                 <div>
-                  <div class="text-[10px] font-semibold text-neutral-400 uppercase tracking-wider">{m.label}</div>
-                  <div class="text-sm font-semibold text-neutral-900 dark:text-white mt-0.5">{m.value}</div>
+                  <div class="text-[10px] font-semibold text-neutral-500 uppercase tracking-wider">{m.label}</div>
+                  <div class="text-xs sm:text-sm font-semibold text-neutral-900 dark:text-white mt-0.5">{m.value}</div>
                 </div>
               ))}
             </div>
@@ -87,14 +86,14 @@ import { projects } from "../data/projects";
           <div class="flex items-center justify-between pt-1">
             <div class="flex flex-wrap gap-1.5">
               {project.tags.slice(0, 3).map((tag) => (
-                <span class="text-xs px-2.5 py-1 rounded-lg bg-black/[0.04] dark:bg-white/5 text-neutral-700 dark:text-neutral-300 border border-black/5 dark:border-white/5">
+                <span class="text-[11px] px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700 font-medium">
                   {tag}
                 </span>
               ))}
             </div>
             
-            <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-              Inspect
+            <span class="text-xs font-semibold text-neutral-900 dark:text-neutral-200 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+              View
               <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
               </svg>
@@ -105,67 +104,67 @@ import { projects } from "../data/projects";
     ))}
   </div>
 
-  <!-- Interactive Project Modal (Matching High-Readability Card Styling) -->
+  <!-- Project Inspection Modal -->
   <div id="project-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 md:p-10">
-    <div id="modal-backdrop" class="fixed inset-0 bg-black/60 dark:bg-black/85 backdrop-blur-md transition-opacity"></div>
+    <div id="modal-backdrop" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
     
-    <div class="relative w-full max-w-4xl max-h-[92vh] apple-card rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl z-10 text-neutral-900 dark:text-white border border-white/60 dark:border-white/15">
+    <div class="relative w-full max-w-4xl max-h-[92vh] bg-white dark:bg-[#16181f] border border-neutral-200 dark:border-neutral-800 rounded-xl overflow-hidden flex flex-col shadow-2xl z-10 text-neutral-900 dark:text-white">
       <!-- Modal Header -->
-      <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-200/80 dark:border-white/10 bg-white/60 dark:bg-white/[0.04]">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900/50">
         <div class="pr-3">
-          <span id="modal-category" class="text-xs font-mono font-medium text-blue-600 dark:text-blue-400 uppercase tracking-wider block"></span>
-          <h3 id="modal-title" class="text-xl sm:text-2xl font-bold tracking-tight text-neutral-900 dark:text-white truncate mt-0.5"></h3>
+          <span id="modal-category" class="text-xs font-mono font-medium text-neutral-500 uppercase tracking-wider block"></span>
+          <h3 id="modal-title" class="text-lg sm:text-xl font-bold tracking-tight text-neutral-900 dark:text-white truncate mt-0.5"></h3>
         </div>
-        <button id="modal-close" class="p-2 rounded-full glass-btn text-neutral-700 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer shrink-0">
+        <button id="modal-close" class="p-1.5 rounded-lg clean-btn text-neutral-600 dark:text-neutral-300 hover:text-black dark:hover:text-white transition-colors cursor-pointer shrink-0">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
 
-      <!-- Modal Body (Scrollable with mobile momentum scrolling) -->
-      <div class="flex-1 overflow-y-auto p-6 sm:p-8 space-y-6 overscroll-contain" style="-webkit-overflow-scrolling: touch;">
+      <!-- Modal Body -->
+      <div class="flex-1 overflow-y-auto p-6 sm:p-7 space-y-6 overscroll-contain">
         <!-- Interactive Slide Carousel -->
-        <div class="space-y-2.5">
-          <div class="relative rounded-xl sm:rounded-2xl overflow-hidden border border-black/10 dark:border-white/10 bg-black aspect-[16/9] shadow-md">
+        <div class="space-y-2">
+          <div class="relative rounded-lg overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-black aspect-[16/9]">
             <img id="carousel-img" src="" alt="Project Slide" class="w-full h-full object-contain" />
             
-            <button id="prev-slide" class="absolute left-2.5 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/60 active:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer hover:scale-105">
+            <button id="prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white transition-all cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
               </svg>
             </button>
-            <button id="next-slide" class="absolute right-2.5 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/60 active:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all cursor-pointer hover:scale-105">
+            <button id="next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-black/60 hover:bg-black/80 text-white transition-all cursor-pointer">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
               </svg>
             </button>
 
-            <div class="absolute bottom-3 right-3 px-2.5 py-1 rounded-md bg-black/75 border border-white/10 text-xs font-mono text-white">
+            <div class="absolute bottom-3 right-3 px-2 py-0.5 rounded bg-black/70 text-xs font-mono text-white">
               <span id="slide-index">1</span> / <span id="slide-total">1</span>
             </div>
           </div>
-          <p id="slide-caption" class="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 italic px-1"></p>
+          <p id="slide-caption" class="text-xs text-neutral-500 italic px-0.5"></p>
         </div>
 
         <!-- Metrics Row -->
-        <div id="modal-metrics" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1"></div>
+        <div id="modal-metrics" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-1"></div>
 
-        <!-- Details & Highlights with crystal-clear contrast -->
-        <div class="space-y-5 pt-4 border-t border-neutral-200/80 dark:border-white/10">
+        <!-- Details & Highlights -->
+        <div class="space-y-4 pt-3 border-t border-neutral-200 dark:border-neutral-800">
           <div>
-            <h4 class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Project Overview</h4>
-            <p id="modal-summary" class="text-sm sm:text-base text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal"></p>
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-1.5">Project Overview</h4>
+            <p id="modal-summary" class="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed font-normal"></p>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Key Engineering Contributions</h4>
-            <ul id="modal-highlights" class="space-y-2 text-sm text-neutral-700 dark:text-neutral-300"></ul>
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-1.5">Key Engineering Contributions</h4>
+            <ul id="modal-highlights" class="space-y-1.5 text-sm text-neutral-700 dark:text-neutral-300"></ul>
           </div>
 
           <div>
-            <h4 class="text-xs font-semibold uppercase tracking-wider text-neutral-400 mb-2">Tools & Competencies</h4>
-            <div id="modal-tags" class="flex flex-wrap gap-2"></div>
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-neutral-500 mb-1.5">Tools & Competencies</h4>
+            <div id="modal-tags" class="flex flex-wrap gap-1.5"></div>
           </div>
         </div>
       </div>
@@ -215,21 +214,21 @@ import { projects } from "../data/projects";
 
     // Highlights
     modalHighlights.innerHTML = proj.highlights
-      .map(h => `<li class="flex items-start gap-2.5"><span class="text-blue-600 dark:text-blue-400 mt-0.5">•</span><span class="leading-relaxed">${h}</span></li>`)
+      .map(h => `<li class="flex items-start gap-2.5"><span class="text-neutral-400 mt-0.5">•</span><span class="leading-relaxed">${h}</span></li>`)
       .join('');
 
     // Tags
     modalTags.innerHTML = proj.tags
-      .map(t => `<span class="px-2.5 py-1 rounded-lg bg-black/[0.04] dark:bg-white/5 border border-black/5 dark:border-white/5 text-xs text-neutral-700 dark:text-neutral-300 font-medium">${t}</span>`)
+      .map(t => `<span class="px-2.5 py-1 rounded bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 text-xs text-neutral-700 dark:text-neutral-300 font-medium">${t}</span>`)
       .join('');
 
-    // Metrics matching company tiles
+    // Metrics
     if (proj.metrics && proj.metrics.length > 0) {
       modalMetrics.innerHTML = proj.metrics
         .map(m => `
-          <div class="p-3.5 rounded-xl bg-black/[0.03] dark:bg-white/5 border border-black/5 dark:border-white/10">
-            <div class="text-[10px] uppercase font-semibold tracking-wider text-neutral-400">${m.label}</div>
-            <div class="text-sm sm:text-base font-bold text-neutral-900 dark:text-white mt-0.5">${m.value}</div>
+          <div class="p-3 rounded-lg bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800">
+            <div class="text-[10px] uppercase font-semibold text-neutral-500">${m.label}</div>
+            <div class="text-sm font-bold text-neutral-900 dark:text-white mt-0.5">${m.value}</div>
           </div>
         `).join('');
       modalMetrics.classList.remove('hidden');
@@ -274,7 +273,7 @@ import { projects } from "../data/projects";
     updateSlide();
   });
 
-  // Touch Swipe Support for iOS Safari
+  // Touch Swipe Support
   let touchStartX = 0;
   let touchEndX = 0;
 
